@@ -16,7 +16,7 @@ import collections
 
 
 username = '12345678'
-password = 'abcdefgh'
+password = 'password'
 
 class ConnectError(Exception):
     def __init__(self, value):
@@ -152,12 +152,12 @@ class HBULoginer():
         z = v[n]
         y = v[0]
         pp = 0
-        c = ctypes.c_int32(0x86014019).value | ctypes.c_int32(0x183639A0).value
+        c = 0x86014019 | 0x183639A0
         q = int(math.floor(6 + 52 / (n+1)))
         d = 0
         while(q > 0):
             q = q-1
-            d = ctypes.c_int32(ctypes.c_int32(d).value + ctypes.c_int32(c).value & (ctypes.c_int32(0x8CE0D9BF).value | ctypes.c_int32(0x731F2640).value)).value
+            d = d + c & (0x8CE0D9BF | 0x731F2640)
             e = self.__urs_op(d, 2) & 3
             for p in range(n):
                 pp = p
